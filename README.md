@@ -1,4 +1,4 @@
-# wue-filmes
+# vue-filmes
 
 ## Project setup
 ```
