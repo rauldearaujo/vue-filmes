@@ -80,16 +80,8 @@ export default {
         let urlRequest = API_BASE.url + "discover/movie"
         let response = await axios.get(urlRequest, {params: params})
         this.movies = response.data.results
+        this.totalPages = response.data.total_pages
       },
-
-      // getGenres: async function() {
-      //   let params = {
-      //     api_key: API_BASE.key
-      //   }
-      //   let urlRequest = API_BASE.url + "genre/movie/list"
-      //   let response = await axios.get(urlRequest, {params: params})
-      //   this.genres = response.data.genres
-      // },
 
     },
 
@@ -99,7 +91,7 @@ export default {
 
     data() {
       return {
-        totalPages: 1000,
+        totalPages: 1,
         genres: [],
         movies: [],
       };
