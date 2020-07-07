@@ -6,7 +6,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Give me a movie!</b-nav-item>
+          <!-- <b-nav-item href="#">Give me a movie!</b-nav-item> -->
           <!-- <b-nav-item-dropdown text="Genres" right>
             <b-dropdown-item v-for="genre in genres" :key="genre.id" href="#">{{genre.name}}</b-dropdown-item>
           </b-nav-item-dropdown> -->
