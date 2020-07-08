@@ -12,7 +12,7 @@
       </b-col>
     </b-row>
     <hr/>
-    <div v-if="movies.length === 0">
+    <div v-if="loadingMovies">
       <b-spinner label="Loading..." class="spinner" variant="primary"></b-spinner>
     </div>
     <div e-else>
@@ -87,6 +87,7 @@ export default {
       },
 
       updateMovies: async function() {
+        this.loadingMovies = true
         let params = {
           api_key: API_BASE.key,
           page: this.page,
@@ -96,6 +97,7 @@ export default {
         let response = await axios.get(urlRequest, {params: params})
         this.movies = response.data.results
         this.totalPages = response.data.total_pages
+        this.loadingMovies = false
       },
 
     },
@@ -109,6 +111,7 @@ export default {
         totalPages: 1,
         genres: [],
         movies: [],
+        loadingMovies: false,
         sortMoviesBy: "original_title.asc",
         sortMoviesByOptions: [
           {
