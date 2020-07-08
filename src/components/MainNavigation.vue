@@ -1,6 +1,16 @@
 <template>
   <div>
-    <h2 align="left"><i class="fas fa-fire"></i> Most Popular</h2>
+    <b-row>
+      <b-col class="sort-title">
+        <h2 v-if="sortMoviesBy === 'popularity.desc'"><i class="fas fa-fire"></i> Most Popular</h2>
+        <h2 v-else-if="sortMoviesBy === 'vote_average.desc'"><i class="fas fa-star"></i> Top Rated</h2>
+        <h2 v-else><i class="fas fa-sort-alpha-down"></i> Per Title</h2>
+      </b-col>
+      <b-col align="right" lg="4" sm="12">
+        <h6 align="left">Sort movies by:</h6>
+        <b-form-select v-model="sortMoviesBy" :options="sortMoviesByOptions"></b-form-select>
+      </b-col>
+    </b-row>
     <hr/>
     <div v-if="movies.length === 0">
       <b-spinner label="Loading..." class="spinner" variant="primary"></b-spinner>
@@ -58,8 +68,13 @@ export default {
 
     watch: {
         page: function() {
-            this.updateMovies();
+          this.updateMovies();
+        },
+
+        sortMoviesBy: function() {
+          this.updateMovies();
         }
+
     },
 
     methods: {
@@ -75,7 +90,7 @@ export default {
         let params = {
           api_key: API_BASE.key,
           page: this.page,
-          sort_by: "popularity.desc"
+          sort_by: this.sortMoviesBy
         }
         let urlRequest = API_BASE.url + "discover/movie"
         let response = await axios.get(urlRequest, {params: params})
@@ -94,6 +109,21 @@ export default {
         totalPages: 1,
         genres: [],
         movies: [],
+        sortMoviesBy: "original_title.asc",
+        sortMoviesByOptions: [
+          {
+            text: "Popularity",
+            value: "popularity.desc"
+          }, 
+          {
+            text: "Evaluation",
+            value: "vote_average.desc"
+          },
+          {
+            text: "Title",
+            value: "original_title.asc"
+          }
+        ]
       };
     }
   
@@ -104,5 +134,13 @@ export default {
 .pages-control {
   display: block;
   margin: auto;
+}
+.sort-title {
+  position: relative;
+  text-align: left;
+}
+.sort-title h2{
+  position: absolute;
+  bottom: 0;
 }
 </style>

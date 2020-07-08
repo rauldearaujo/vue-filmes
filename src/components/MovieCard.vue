@@ -2,6 +2,7 @@
     <div>
         <!-- Quando o filme possui figura -->
         <b-card v-if="poster_path"
+            :id="'title-tooltip-' + id"
             :img-src="'https://image.tmdb.org/t/p/w300/' + poster_path"
             @click="goToMovie"
         >
@@ -15,14 +16,23 @@
         </b-card>
 
         <!-- Quando o filme não possui figura -->
-        <b-card v-else 
-            :title="title" 
+        <b-card v-else  
+            :id="'title-tooltip-' + id"
             title-tag="h6"
             :img-src="require('../assets/film-art.png')"
         >
-            <b-badge pill variant="danger"><i class="fas fa-fire"></i> {{popularity}}</b-badge>
-            <b-badge pill variant="warning"><i class="fas fa-star"></i> {{vote_average}}</b-badge>
+            <b-badge pill variant="danger">
+                <i class="fas fa-fire"></i> {{popularity}}
+            </b-badge>
+            <b-badge pill variant="warning">
+                <i class="fas fa-star"></i> {{vote_average}}
+            </b-badge>
         </b-card>
+
+        <b-tooltip :target="'title-tooltip-' + id" triggers="hover">
+            {{title}}
+        </b-tooltip>
+
     </div>
 </template>
 
