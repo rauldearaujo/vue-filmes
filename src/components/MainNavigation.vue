@@ -63,6 +63,10 @@ export default {
       page: {
         type: Number,
         default: 1
+      },
+      sortMoviesBy: {
+        type: String,
+        default: "original_title.asc"
       }
     },
 
@@ -82,7 +86,7 @@ export default {
       linkGen(pageNum) {
         return {
           name: 'home',
-          params: { page: pageNum }
+          params: { page: pageNum, sortMoviesBy: this.sortMoviesBy }
         }
       },
 
@@ -112,7 +116,6 @@ export default {
         genres: [],
         movies: [],
         loadingMovies: false,
-        sortMoviesBy: "original_title.asc",
         sortMoviesByOptions: [
           {
             text: "Popularity",

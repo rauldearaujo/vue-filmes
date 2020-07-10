@@ -20,6 +20,7 @@
             :id="'title-tooltip-' + id"
             title-tag="h6"
             :img-src="require('../assets/film-art.png')"
+            @click="goToMovie"
         >
             <b-badge pill variant="danger">
                 <i class="fas fa-fire"></i> {{popularity}}
