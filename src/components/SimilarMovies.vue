@@ -44,7 +44,7 @@ export default {
     methods: {
         getSimilarMovies: async function() {
             let params = {
-                api_key: API_BASE.key
+                api_key: process.env.VUE_APP_API_KEY
             }
             let urlRequest = API_BASE.url + `movie/${this.movieId}/similar`
             let response = await axios.get(urlRequest, {params: params})
