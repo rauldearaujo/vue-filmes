@@ -9,7 +9,8 @@ const routes = [
         path: "/:page?",
         component: MainNavigation,
         props: (route) => ({
-            page: route.params.page || 1
+            page: route.params.page || 1,
+            sortMoviesBy: route.params.sortMoviesBy || 'original_title.asc'
         })
     },
     {
