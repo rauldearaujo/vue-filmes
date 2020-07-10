@@ -42,11 +42,11 @@
             </b-col>
         </b-row>
         <br/>
-        <b-row v-if="movie.overview">
-            <b-col>
+        <b-row>
+            <b-col v-if="movie.overview">
                 <p>{{movie.overview}}</p>
             </b-col>
-            <b-col lg="3" align="right">
+            <b-col v-if="movie.poster_path" lg="3" align="right">
                 <b-img 
                     thumbnail 
                     fluid 
