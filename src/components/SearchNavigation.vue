@@ -88,7 +88,7 @@ export default {
         this.loadingSearch = true
         this.movies = []
         let params = {
-          api_key: API_BASE.key,
+          api_key: process.env.VUE_APP_API_KEY,
           query: this.searchTerm,
           page: this.page
         }

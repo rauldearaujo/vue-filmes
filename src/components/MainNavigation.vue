@@ -93,7 +93,7 @@ export default {
       updateMovies: async function() {
         this.loadingMovies = true
         let params = {
-          api_key: API_BASE.key,
+          api_key: process.env.VUE_APP_API_KEY,
           page: this.page,
           sort_by: this.sortMoviesBy
         }
