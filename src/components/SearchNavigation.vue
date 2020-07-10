@@ -11,7 +11,7 @@
       <div v-else>
         <b-row>
           <b-card-group deck>
-            <b-col lg="3" v-for="movie in movies" :key="movie.id">
+            <b-col lg="3" md="6" sm="12" v-for="movie in movies" :key="movie.id">
               <movie-card 
                 :id="movie.id"
                 :title="movie.title" 
